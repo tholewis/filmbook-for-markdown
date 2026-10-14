@@ -37,7 +37,7 @@
 
 <main>
   <section class="wrap hero">
-    <div>
+    <div class="hero-copy">
       <h1>Simply delightful Markdown reading.</h1>
       <p class="lede">Open a <code>.md</code> file and Filmbook gets out of the way. No edit mode to escape, no toolbar clutter — just your words, set in a typeface worth reading.</p>
       <div class="platforms">
@@ -48,12 +48,21 @@
       <span class="coming-soon">Coming soon to the App Store</span>
     </div>
     <div class="hero-art">
-      <img class="mac-shot" src="assets/img/screenshots/mac-light.png" alt="Filmbook rendering the What Is Filmbook guide on Mac, in the Light theme">
-      <img class="phone-shot" src="assets/img/screenshots/phone-light.png" alt="Filmbook rendering the same guide on iPhone">
+      <div class="device device-ipad">
+        <img src="assets/img/screenshots/ipad-sand.png" alt="Filmbook rendering the What Is Filmbook guide on iPad, in the Sand theme">
+      </div>
+      <div class="device device-mac">
+        <div class="device-mac-bar"><span></span><span></span><span></span></div>
+        <img src="assets/img/screenshots/mac-hero.png" alt="Filmbook rendering the What Is Filmbook guide on Mac, in the Light theme">
+      </div>
+      <div class="device device-iphone">
+        <div class="device-iphone-island"></div>
+        <img src="assets/img/screenshots/phone-water.png" alt="Filmbook rendering the same guide on iPhone, in the Water theme">
+      </div>
     </div>
   </section>
 
-  <section class="wrap philosophy">
+  <section class="wrap philosophy reveal">
     <div class="section-head">
       <h2>A reading app, not an editor</h2>
       <p>Most Markdown apps start as editors and bolt on a preview. Filmbook starts from the opposite end: it assumes the file is already finished, and its only job is to present it beautifully.</p>
@@ -62,32 +71,38 @@
   </section>
 
   <section class="wrap" id="features">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>What's inside</h2>
       <p>Everything Filmbook does, it does for the reader.</p>
     </div>
     <div class="feature-grid">
-      <div class="feature-card">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">Aa</div>
         <h3>Typography</h3>
         <p>Serif, sans, and monospaced faces — including Atkinson Hyperlegible for accessibility — all scaling with Dynamic Type.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">◐</div>
         <h3>Themes</h3>
         <p>Light, Dark, Sand, Water, and Industrial, each tuned separately for screen and print.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">≡</div>
         <h3>Outline</h3>
         <p>Jump to any heading in the document instantly.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">∑</div>
         <h3>Math</h3>
         <p>Display equations rendered properly through KaTeX; inline math approximated with Unicode symbols.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">&lt;/&gt;</div>
         <h3>Code</h3>
         <p>Syntax-aware highlighting that adapts to every theme.</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">⇩</div>
         <h3>Export</h3>
         <p>Print or save a paginated PDF of the rendered document.</p>
       </div>
@@ -95,35 +110,35 @@
   </section>
 
   <section class="wrap" id="themes">
-    <div class="section-head">
+    <div class="section-head reveal">
       <h2>Five themes, tuned by hand</h2>
       <p>The same guide, rendered in every theme Filmbook ships with.</p>
     </div>
     <div class="theme-gallery">
-      <figure class="theme-card">
-        <img src="assets/img/screenshots/mac-light.png" alt="Light theme">
+      <figure class="theme-card reveal" style="--card-accent:#2F6291">
+        <div class="theme-shot-wrap"><img src="assets/img/screenshots/mac-light.png" alt="Light theme"></div>
         <figcaption>Light</figcaption>
       </figure>
-      <figure class="theme-card">
-        <img src="assets/img/screenshots/mac-dark.png" alt="Dark theme">
+      <figure class="theme-card reveal" style="--card-accent:#6FA8E0">
+        <div class="theme-shot-wrap"><img src="assets/img/screenshots/mac-dark.png" alt="Dark theme"></div>
         <figcaption>Dark</figcaption>
       </figure>
-      <figure class="theme-card">
-        <img src="assets/img/screenshots/mac-sand.png" alt="Sand theme">
+      <figure class="theme-card reveal" style="--card-accent:#9C5A30">
+        <div class="theme-shot-wrap"><img src="assets/img/screenshots/mac-sand.png" alt="Sand theme"></div>
         <figcaption>Sand</figcaption>
       </figure>
-      <figure class="theme-card">
-        <img src="assets/img/screenshots/mac-water.png" alt="Water theme">
+      <figure class="theme-card reveal" style="--card-accent:#00C8DC">
+        <div class="theme-shot-wrap"><img src="assets/img/screenshots/mac-water.png" alt="Water theme"></div>
         <figcaption>Water</figcaption>
       </figure>
-      <figure class="theme-card">
-        <img src="assets/img/screenshots/mac-industrial.png" alt="Industrial theme">
+      <figure class="theme-card reveal" style="--card-accent:#8A6500">
+        <div class="theme-shot-wrap"><img src="assets/img/screenshots/mac-industrial.png" alt="Industrial theme"></div>
         <figcaption>Industrial</figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="wrap alice" id="alice">
+  <section class="wrap alice reveal" id="alice">
     <div class="section-head">
       <h2>See it rendered: Alice in Wonderland</h2>
       <p>A public-domain illustrated summary of the 1865 classic, with Sir John Tenniel's original artwork — rendered by the same engine that reads your own files.</p>
@@ -156,5 +171,6 @@
   </div>
 </footer>
 
+<script src="assets/js/reveal.js"></script>
 </body>
 </html>
