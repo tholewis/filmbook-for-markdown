@@ -1,0 +1,398 @@
+/* Filmbook marketing site
+   Palette and type choices mirror the app's own Light/Sand/Dark themes
+   (see Themes.swift in the Filmbook app) for brand continuity. */
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/AtkinsonHyperlegible-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("../fonts/AtkinsonHyperlegible-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --bg: #fbfbfa;
+  --surface: #f2f2f7;
+  --text: #1c1c1e;
+  --text-secondary: #6e6e73;
+  --heading: #1a1a1f;
+  --accent: #2f6291;
+  --rule: #d8d8dc;
+
+  --sand-bg: #f3e4c8;
+  --sand-surface: #e7d2a8;
+  --sand-heading: #9c5a30;
+  --sand-accent: #35707d;
+  --sand-text: #3a2a18;
+
+  --font-serif: Georgia, "Iowan Old Style", "Palatino", serif;
+  --font-sans: "Atkinson Hyperlegible", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --measure: 70ch;
+  --radius: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1a1c;
+    --surface: #2a2a2d;
+    --text: #e6e6ea;
+    --text-secondary: #9a9aa0;
+    --heading: #f3f3f6;
+    --accent: #6fa8e0;
+    --rule: #3a3a3e;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+a:not(.button) { text-underline-offset: 0.15em; }
+
+img { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  color: var(--heading);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--heading);
+}
+
+.brand img { width: 32px; height: 32px; }
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.site-nav {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover { color: var(--accent); }
+
+/* Hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  padding: 56px 0 80px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0 0 18px;
+}
+
+.hero p.lede {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  max-width: 46ch;
+  margin: 0 0 28px;
+}
+
+.platforms {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.platform-pill {
+  font-size: 0.82rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--rule);
+}
+
+.coming-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--sand-bg);
+  color: var(--sand-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.hero-art { position: relative; }
+
+.hero-art .mac-shot {
+  border-radius: 10px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.35);
+  border: 1px solid var(--rule);
+}
+
+.hero-art .phone-shot {
+  position: absolute;
+  bottom: -40px;
+  right: -28px;
+  width: 36%;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+  border: 6px solid var(--bg);
+}
+
+/* Sections */
+
+section { padding: 64px 0; }
+
+.section-head { max-width: 60ch; margin: 0 auto 40px; text-align: center; }
+.section-head h2 { font-size: 2.1rem; margin: 0 0 12px; }
+.section-head p { color: var(--text-secondary); margin: 0; }
+
+.philosophy {
+  background: var(--surface);
+  border-radius: 24px;
+}
+
+.philosophy blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--heading);
+  max-width: 50ch;
+  margin: 24px auto 0;
+  text-align: center;
+  border: none;
+  padding: 0;
+}
+
+/* Feature grid */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.feature-card {
+  padding: 28px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.feature-card h3 {
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.96rem;
+}
+
+/* Theme gallery */
+
+.theme-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.theme-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.theme-card img { aspect-ratio: 4/3; object-fit: cover; object-position: top; }
+
+.theme-card figcaption {
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+
+/* Alice showcase */
+
+.alice {
+  background: var(--sand-bg);
+  color: var(--sand-text);
+  border-radius: 28px;
+}
+
+.alice .section-head h2,
+.alice .section-head p { color: var(--sand-text); }
+
+.alice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.alice-grid figure { margin: 0; }
+
+.alice-grid img {
+  border-radius: 10px;
+  box-shadow: 0 20px 40px -16px rgba(58,42,24,0.4);
+}
+
+.alice-grid figcaption {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--sand-text);
+  opacity: 0.8;
+}
+
+.alice-credit {
+  max-width: 60ch;
+  margin: 36px auto 0;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 40px 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.site-footer .footer-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.site-footer a { color: var(--text-secondary); }
+.site-footer a:hover { color: var(--accent); }
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.credits {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Simple pages (support / privacy) */
+
+.doc {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 56px 24px 96px;
+}
+
+.doc h1 { font-size: 2.4rem; margin-bottom: 8px; }
+.doc .meta { color: var(--text-secondary); margin-bottom: 40px; font-size: 0.9rem; }
+.doc h2 { font-size: 1.4rem; margin-top: 40px; }
+.doc p, .doc li { color: var(--text); }
+.doc .lede { color: var(--text-secondary); font-size: 1.1rem; }
+
+.faq-item { margin-bottom: 28px; }
+.faq-item h3 { font-size: 1.05rem; margin: 0 0 6px; color: var(--heading); }
+.faq-item p { margin: 0; color: var(--text-secondary); }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-top: 32px; }
+  .hero h1 { font-size: 2.3rem; }
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+  .theme-gallery { grid-template-columns: repeat(2, 1fr); }
+  .alice-grid { grid-template-columns: 1fr; }
+  .hero-art .phone-shot { display: none; }
+}
+
+@media (max-width: 560px) {
+  .feature-grid { grid-template-columns: 1fr; }
+  .theme-gallery { grid-template-columns: 1fr; }
+  .site-nav { gap: 14px; }
+}
