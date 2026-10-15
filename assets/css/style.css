@@ -256,119 +256,66 @@ h1, h2, h3 {
   50% { transform: translateY(-5px); }
 }
 
-/* Hero device composition */
+/* Hero: a fanned stack of themed screenshots (a "hand of cards"/stacked
+   book pages) with a warm glow behind the front page, rather than a
+   device-hardware mockup -- leans into the book/paper metaphor instead
+   of competing with Apple's own product photography. */
 
 .hero-art {
   position: relative;
-  height: 520px;
+  height: 540px;
   z-index: 0;
 }
 
-.hero-art::before,
-.hero-art::after {
+.hero-art::before {
   content: "";
   position: absolute;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
+  background: var(--sand-bg);
+  opacity: 0.5;
   filter: blur(70px);
+  top: -20px;
+  right: 10%;
   z-index: -1;
 }
 
-.hero-art::before {
-  width: 340px;
-  height: 340px;
-  background: var(--sand-bg);
-  opacity: 0.55;
-  top: -30px;
-  right: 6%;
-}
-
-.hero-art::after {
-  width: 280px;
-  height: 280px;
-  background: var(--accent);
-  opacity: 0.22;
-  bottom: 0;
-  left: -10px;
-}
-
-/* Fan composition: percentages are sized against the hero column (max ~528px
-   at the 1120px wrap) and checked against each image's own aspect ratio so
-   nothing exceeds the 520px hero-art height above. */
-.device {
+.page-card {
   position: absolute;
-  box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.05);
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-}
-
-.device-mac {
-  width: 58%;
-  left: 0;
-  top: 16%;
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  background: #fbfbfa;
-  z-index: 2;
-}
-
-.device-mac-bar {
-  height: 24px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 var(--space-sm);
-  background: linear-gradient(#f2f2f0, #e4e4e2);
-}
-
-.device-mac-bar span { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.device-mac-bar span:nth-child(1) { background: #ff5f57; }
-.device-mac-bar span:nth-child(2) { background: #febc2e; }
-.device-mac-bar span:nth-child(3) { background: #28c840; }
-
-.device-mac img { display: block; width: 100%; }
-
-.device-ipad {
-  width: 28%;
-  left: 40%;
-  top: 0;
-  border-radius: 22px;
-  background: linear-gradient(155deg, #3a3a3d, #1c1c1e);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 80px -24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.05);
-  padding: 10px 7px;
-  z-index: 1;
-  transform: rotate(5deg);
-}
-
-.device-ipad img { display: block; width: 100%; border-radius: 10px; }
-
-.device-iphone {
-  width: 20%;
-  left: 60%;
-  bottom: 0;
-  border-radius: 30px;
-  background: linear-gradient(155deg, #3a3a3d, #1c1c1e);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 80px -24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0, 0, 0, 0.05);
-  padding: 9px 6px;
-  z-index: 3;
-  transform: rotate(-6deg);
-}
-
-.device-iphone img { display: block; width: 100%; border-radius: 21px; }
-
-.device-iphone-island {
-  position: absolute;
-  top: 16px;
+  bottom: 10px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 32%;
-  height: 14px;
-  border-radius: 8px;
-  background: #000;
-  z-index: 4;
+  width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 50px 90px -30px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  transform-origin: bottom center;
+  transition: transform 0.4s var(--ease);
 }
 
-.hero-art:hover .device-mac { transform: translateY(-6px); }
-.hero-art:hover .device-ipad { transform: rotate(5deg) translateY(-4px); }
-.hero-art:hover .device-iphone { transform: rotate(-6deg) translateY(-10px); }
+.page-card img { display: block; width: 100%; }
+
+.page-card.back-left {
+  transform: translateX(-50%) translateX(-130px) rotate(-11deg);
+  z-index: 1;
+  filter: saturate(0.85) brightness(0.92);
+}
+
+.page-card.back-right {
+  transform: translateX(-50%) translateX(120px) rotate(13deg);
+  z-index: 2;
+  filter: saturate(0.85) brightness(0.92);
+}
+
+.page-card.front {
+  transform: translateX(-50%) rotate(-2deg);
+  z-index: 3;
+  width: 320px;
+}
+
+.hero-art:hover .page-card.back-left { transform: translateX(-50%) translateX(-150px) rotate(-14deg); }
+.hero-art:hover .page-card.back-right { transform: translateX(-50%) translateX(140px) rotate(16deg); }
+.hero-art:hover .page-card.front { transform: translateX(-50%) rotate(-2deg) translateY(-10px); }
 
 /* Sections */
 
@@ -520,6 +467,8 @@ section[id] { scroll-margin-top: var(--space-2xl); }
 .alice-grid figure:hover { transform: translateY(-6px); }
 
 .alice-grid img {
+  max-width: 50%;
+  margin: 0 auto;
   border-radius: var(--radius-sm);
   box-shadow: 0 20px 40px -16px rgba(58, 42, 24, 0.4);
 }
@@ -612,22 +561,22 @@ section[id] { scroll-margin-top: var(--space-2xl); }
   .hero-copy { align-items: center; text-align: center; }
   .hero p.lede { max-width: 52ch; }
   .platforms, .hero-copy { align-items: center; }
-  /* Collapse the 3-device fan into one centered, normal-flow Mac card --
-     the absolute-position percentages above are only tuned for the
-     two-column desktop width, so don't try to reuse them here. */
+  /* Collapse the fanned stack into one centered, normal-flow card -- the
+     absolute-position offsets above are only tuned for the two-column
+     desktop width, so don't try to reuse them here. */
   .hero-art {
     height: auto;
     margin-top: var(--space-2xl);
     display: flex;
     justify-content: center;
   }
-  .hero-art::before,
-  .hero-art::after { display: none; }
-  .device-ipad, .device-iphone { display: none; }
-  .device-mac {
+  .hero-art::before { display: none; }
+  .page-card.back-left, .page-card.back-right { display: none; }
+  .page-card.front {
     position: static;
     width: 100%;
-    max-width: 420px;
+    max-width: 360px;
+    transform: none;
   }
   .feature-grid { grid-template-columns: 1fr 1fr; }
   .theme-gallery { grid-template-columns: repeat(2, 1fr); }
